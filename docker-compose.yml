@@ -1,0 +1,17 @@
+services:
+
+  nltk:
+    build:
+      context: ./
+      dockerfile: ./docker/nltk/Dockerfile
+    container_name: nltk
+    image: nltk
+    volumes:
+      - ./src:/nltk
+      - ./data:/root/nltk_data
+    ports:
+      - "80:80"
+
+networks:
+  default:
+    name: nltk_network
