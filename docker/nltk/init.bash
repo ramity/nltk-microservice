@@ -1,2 +1,2 @@
-python -m nltk.downloader -d /root/nltk_data all
+python -m nltk.downloader -d /root/nltk-data all
 sleep infinity

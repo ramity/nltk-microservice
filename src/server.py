@@ -46,8 +46,8 @@ def sentiment(text):
 
     return scores
 
-@app.route("/tokenize", methods=["POST"])
-def tokenize(text):
+@app.route("/frequency/word", methods=["POST"])
+def word_frequency(text):
 
     """
     Converts incoming text into token counts.
@@ -60,12 +60,46 @@ def tokenize(text):
     """
 
     tokens = word_tokenize(text)
-    counts = Counter(tokens)
+    frequency = Counter(tokens)
 
-    return counts
+    return frequency
+
+@app.route("/tokenize/words", methods=["POST"])
+def tokenize_words(text):
+
+    """
+    Converts incoming text into array of words.
+
+    Args:
+        { text }
+
+    Returns 
+        [ word_0, word_1, ... , word_n ]
+    """
+
+    words = word_tokenize(text)
+
+    return words
+
+@app.route("/tokenize/sentences", methods=["POST"])
+def tokenize_sentences(text):
+
+    """
+    Converts incoming text into array of sentences.
+
+    Args:
+        { text }
+
+    Returns 
+        [ sentence_0, sentence_1, ... , sentence_n ]
+    """
+
+    sentences = sent_tokenize(text)
+
+    return sentences
 
 @app.route("/scrape", methods=["POST"])
-def request(url):
+def scrape(url):
 
     """
     Scrapes the incoming URL, gzips and saves the response.
